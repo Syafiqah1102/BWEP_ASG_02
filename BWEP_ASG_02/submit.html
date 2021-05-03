@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+  <meta name="viewport "content="width=device-width, initial-scale=1.0">
+</head>
+</head>
+
+<style type="text/css">
+	img{
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		width: 20%;
+		padding-top: 10%;
+	}
+
+	body {
+		background-image: url(bg.png);
+	}
+ 
+    button {
+    	margin-left: auto;
+		margin-right: auto;
+		display: block;
+    }
+	
+
+<style type="text/css">
+
+		body {
+			background: url(bg.png);
+			overflow: hidden;
+		}
+		#container {
+			display: grid;
+			grid-template-columns: 0px 1fr;
+			grid-template-rows: 15vh 75vh 10vh;
+			grid-template-areas: 
+			"header header"
+			"aside main"
+			"footer footer";
+		}
+		header {
+			grid-area: header;
+			width: 100%;
+			display: grid;
+			grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+			grid-gap: 20px;
+			position: relative;
+		    background-color: lightblue;
+		}
+
+		ul li {
+
+		float: left;
+		
+		list-style: none;
+
+		}
+
+		
+
+		 ul li a 
+		  {
+		    display: block;
+		    margin: 1px;
+		    padding: 6px 20px;
+		    text-decoration: none;
+		    color: #262626;
+		    border: 1px solid black;
+		  }
+
+		  ul li a.None,
+		   ul li a:hover 
+		  {
+		    background: navy;
+		    color: #fff;
+		    transition: 0.5s;
+		  }
+
+
+
+	
+</style>
+	
+</script>
+
+<body>
+
+	<header>
+		<ul>
+			<li><a href="index.html" class="None"> Home</a></li>
+			<li><a href="About.html"> About</a></li>
+			<li><a href="Contact.html"> Contact</a></li>
+		</ul> <br>
+	</header>
+
+<div id="card">
+	<img src=".//suc.png">
+	<div style="text-align: center;"> Thank you! </div>
+	<div style="text-align: center;">Your E-card has been sent</div>
+	
+
+</div>
+</body>
+</html>

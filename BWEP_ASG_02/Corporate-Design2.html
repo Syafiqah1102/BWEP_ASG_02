@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Corporate Design 2</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport "content="width=device-width, initial-scale=1.0">
+
+	<style type="text/css">
+		#container {
+			display: grid;
+			grid-template-columns: 200px 1fr;
+			grid-template-rows: 10vh 87vh;
+			grid-template-areas: 
+			"header header"
+			"aside main"
+		}
+
+		header {
+			grid-area: header;
+			width: 100%;
+			display: grid;
+			grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+			grid-gap: 20px;
+			position: relative;
+		    background-color: lightblue;
+		}
+
+		ul li {
+
+		float: left;
+		
+		list-style: none;
+
+		}
+
+		
+
+		 ul li a 
+		  {
+		    display: block;
+		    margin: 1px;
+		    padding: 6px 20px;
+		    text-decoration: none;
+		    color: #262626;
+		    border: 1px solid black;
+		  }
+
+		  ul li a.None,
+		   ul li a:hover 
+		  {
+		    background: navy;
+		    color: #fff;
+		    transition: 0.5s;
+		  }
+
+		main {
+			grid-column: main;
+			background: url(bg.png);
+		}
+		aside {
+			grid-row: aside;
+			background-color: lightgreen;
+		}
+		#cardbox {
+			text-align: center;
+			margin-left: 20%;
+			font-size: 20px;
+		}
+	
+		#changeColor {
+			margin-top: 1%;
+			margin-left: 20%;
+		}
+		#fav {
+			margin-left: 45%;
+		}
+		label,input, select {
+			margin-left: 2%;
+		}
+		#fontStyle{
+			width: 80%;
+		}
+
+		.drop-zone, #drop-zone {
+			position: relative;
+			width: 530px;
+			height: 400px;
+			background: lightpink;
+			color: white;
+			border-radius: 2%;
+			box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+		}
+
+		#line1 {
+		height: 20%;
+		width: 30%;
+	}
+
+	button {
+			margin-left: 1%;
+		}
+
+	@media screen and (max-width: 768px) {
+			.drop-zone, .container {
+				width: 100%;
+			}
+		}
+
+	</style>
+
+
+	<script type="text/javascript">
+		function Preview(){
+			var recipent = document.getElementById("recipent");
+			var invitation = document.getElementById("invitation");
+			var date = document.getElementById("date");
+			var time = document.getElementById("time");
+			var place = document.getElementById("place");
+
+			localStorage.setItem("recipent",recipent.value);
+			localStorage.setItem("invitation",invitation.value);
+			localStorage.setItem("date",date.value);
+			localStorage.setItem("time",time.value);
+			localStorage.setItem("place",place.value);
+
+
+			var recipent = document.getElementById("recipent");
+			var invitation = document.getElementById("invitation");
+			var date = document.getElementById("date");
+			var time = document.getElementById("time");
+			var place = document.getElementById("place");
+
+			var recipent1 = document.getElementById("recipent1");
+			var invitation1 = document.getElementById("invitation1");
+			var date1 = document.getElementById("date1");
+			var time1 = document.getElementById("time1");
+			var place1 = document.getElementById("place1");
+
+			recipent1.innerHTML = localStorage.getItem("recipent");
+			invitation1.innerHTML = localStorage.getItem("invitation");
+			date1.innerHTML = localStorage.getItem("date");
+			time1.innerHTML = localStorage.getItem("time");
+			place1.innerHTML = localStorage.getItem("place");
+
+
+
+		}			
+
+		function myButton() {
+  		location.reload();
+  	}
+	</script>
+
+	<script type="text/javascript">
+		function save(){
+			var recipent = document.getElementById("recipent");
+			var invitation = document.getElementById("invitation");
+			var date = document.getElementById("date");
+			var time = document.getElementById("time");
+			var place = document.getElementById("place");
+
+			localStorage.setItem("recipent",recipent.value);
+			localStorage.setItem("invitation",invitation.value);
+			localStorage.setItem("date",date.value);
+			localStorage.setItem("time",time.value);
+			localStorage.setItem("place",place.value);
+
+		}
+		
+		function loadFav(){
+
+			var recipent = document.getElementById("recipent");
+			var invitation = document.getElementById("invitation");
+			var date = document.getElementById("date");
+			var time = document.getElementById("time");
+			var place = document.getElementById("place");
+
+			var recipent1 = document.getElementById("recipent1");
+			var invitation1 = document.getElementById("invitation1");
+			var date1 = document.getElementById("date1");
+			var time1 = document.getElementById("time1");
+			var place1 = document.getElementById("place1");
+
+			recipent1.innerHTML = localStorage.getItem("recipent");
+			invitation1.innerHTML = localStorage.getItem("invitation");
+			date1.innerHTML = localStorage.getItem("date");
+			time1.innerHTML = localStorage.getItem("time");
+			place1.innerHTML = localStorage.getItem("place");
+		}
+	</script>
+
+	<script type="text/javascript">
+		function changeColor(color)
+		{
+    	document.getElementById('drop-zone').style.backgroundColor = color
+    }
+    </script>
+
+    <script type="text/javascript">
+    	let dragged; 
+      	function onDragOver(event) {
+      	// Prevent default to allow drop
+      	event.preventDefault();
+      }
+
+      function onDragLeave(event) {
+      	event.target.style.background = '';
+      }
+
+      function onDragEnter(event) {
+      	const target = event.target;
+      	if (target && dragged) {
+      		event.preventDefault();
+      		event.dataTransfer.dropEffect = 'move'
+      		target.style.background = '#1f904e';
+      	}
+      }
+
+      function onDrop(event) {
+      	const target = event.target;
+      	if (target && dragged) {
+      		target.style.backgroundColor = '';
+      		event.preventDefault();
+      		dragged.parentNode.removeChild(dragged);
+      		dragged.style.opacity = '';
+      		target.appendChild(dragged);
+      	}
+      }
+
+      function onDragStart(event) {
+      	let target = event.target;
+      	if (target && target.nodeName === 'IMG') { 
+      		dragged = target;
+      		event.dataTransfer.setData('text', target.id);
+      		event.dataTransfer.dropEffect = 'move';
+      		event.target.style.opacity = .3;
+      	}
+      }
+
+      function onDragEnd(event) {
+      	if (event.target && event.target.nodeName === 'IMG') {
+      		event.target.style.opacity = ''; 
+      		dragged = null; 
+      	}
+      }
+  </script>
+
+</head>
+<body id="container">
+	<header>
+		<ul>
+			<li><a href="index.html" class="None"> Home</a></li>
+			<li><a href="About.html"> About</a></li>
+			<li><a href="Contact.html"> Contact</a></li>
+		</ul>
+	</header>
+
+	<aside>
+		<!-- <form method="get" action="" enctype="multipart/form data"> -->
+
+		<br>
+
+		<tr>
+		<td><label for="recipent">Mr/Mrs: </label></td> <br>
+		<td><input type="text" name="recipent" id="recipent"></td>
+		</tr> <br> <br>
+
+		<tr>
+		<td><label for="invitation">Invitation To: </label></td> <br>
+		<td><input type="text" name="invitation" id="invitation"></td>
+		</tr> <br> <br>
+
+		<tr>
+		<td><label for="date"> Date: </label></td> <br>
+		<td><input type="date" name="date" id="date"></td>
+		</tr> <br> <br>
+
+		<tr>
+			<td><label for="time">Time: </label></td> <br>
+		    <td><input type="time" name="time" id="time"></td>
+		</tr> <br> <br>
+
+		<tr>
+		<td><label for="place"> Place: </label></td> <br>
+		<td><input type="text" name="place" id="place"></td>
+		</tr> <br> <br>
+
+		<tr>
+			<td><button onclick="myButton()"> Reset </button></td>
+		</tr>
+
+		<tr>
+			<td><button onclick="Preview()">Preview</button></td>
+		</tr><br><br>
+	<!-- </form> -->
+
+	<label>Change Font: </label> <br>
+	<select onchange="myFunction(this);" size="1" id="fontStyle">
+		<option>Click to Change</option>
+		<option>Arial, sans-serif</option>
+		<option>Helvetica, sans-serif</option>
+		<option>Verdana, sans-serif</option>
+		<option>Trebuchet, sans-serif</option>
+		<option>Gills Sans, sans-serif</option>
+		<option>Noto Sans, sans-serif</option>
+		<option>Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif</option>
+		<option>Optima, sans-serif</option>
+		<option>Arial Narrow, sans-serif</option>
+		<option>sans-serif</option>
+		<option>Times, Times New Roman, serif</option>
+		<option>Didot, serif</option>
+		<option>Georgia, serif</option>
+		<option>Palatino, URW Palladio L, serif</option>
+		<option>New Century Schoolbook, TeX Gyre Schola, serif</option>
+		<option>Amerian Typewriter, serif</option>
+		<option>serif</option>
+		<option>Andale Mono, monospace</option>
+		<option>Courier New, monospace</option>
+		<option>Courier, monospace</option>
+		<option>FreeMono, monospace</option>
+		<option>OCR A Std, monospace</option>
+		<option>DejaVu Sans Mono, monospace</option>
+		<option>monospace</option>
+	</select>
+
+	</aside>
+
+	<main>
+		<div id="changeColor">
+			<label>Change background color: </label>
+			<input type="Color" name="color" onchange="changeColor(this.value)">
+		</div> <br>
+
+		<div id="cardbox">
+			<section class="drop-zone" id="drop-zone">
+			<div> <br>
+				<div id="recipent1" contenteditable="true"></div>
+				<p> WE CORDIALLY INVITE YOU TO </p>
+				<img src="line1.png" id="line1"><br>
+				<div id="invitation1" contenteditable="true"></div>
+				<img src="line1.png" id="line1"><br>
+				<div id="date1" contenteditable="true"></div>
+				<div id="time1" contenteditable="true"></div>
+				<div id="place1" contenteditable="true"></div>
+			</div>
+		</section>
+		</div><br>
+
+			<div>
+				<tr>
+					<td>
+						<button onclick="save()" id="fav">Favorite</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<button onclick="loadFav()" id="loadFav">Load Favorite</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<button onclick="submit()" id="submit"><a href="submit.html"> Submit </a></button>
+					</td>
+				</tr>
+			</div>
+
+		</div>
+	</main>
+</body>
+</html>
